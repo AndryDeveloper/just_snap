@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:just_snap/data/history_handler.dart';
 import '../lists.dart';
 import 'package:just_snap/model.dart';
+import 'challenge.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -26,6 +27,11 @@ class _HistoryPageState extends State<HistoryPage> {
             subtitle: item.buildSubtitle(context),
           );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ChallengePage())),
+        tooltip: 'Increment',
+        child: const Icon(Icons.add_a_photo),
       ),
     );
   }

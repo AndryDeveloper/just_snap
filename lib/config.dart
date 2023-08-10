@@ -1,0 +1,1 @@
+const PHOTO_ICON_REL_SIZE = 0.5;
