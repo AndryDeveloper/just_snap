@@ -37,7 +37,7 @@ class PromptHandler{
     if (!_promptFile.existsSync()) {
       _promptFile.createSync();
     }
-    _labels = File('assets/imagenet22k_labels.txt').readAsLinesSync();
+    _labels = File('assets/labels/imagenet22k_labels.txt').readAsLinesSync();
     _randomGenerator = Random();
   }
 

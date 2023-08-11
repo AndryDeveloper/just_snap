@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../config.dart';
 import '../../data/prompt_handler.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 
 class ChallengePage extends StatefulWidget {
   const ChallengePage({super.key});
@@ -11,9 +13,16 @@ class ChallengePage extends StatefulWidget {
 
 class _ChallengePageState extends State<ChallengePage> {
   final PromptHandler _promptHandler = PromptHandler();
+  final ImagePicker _picker = ImagePicker();
   
   void _submitChallenge() {}
-  void _chooseImage() {}
+  Future<void> _chooseImage() async {
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    final documentDirectory = await getApplicationDocumentsDirectory();
+    if (image != null) {
+      await image.saveTo('${documentDirectory.path}/just_snap/possible_image.jpg');
+    }
+  }
   String _challengePrompt() {
     return _promptHandler.generatePrompt();
   }
@@ -31,7 +40,7 @@ class _ChallengePageState extends State<ChallengePage> {
               GestureDetector(
                 onTap: _chooseImage,
                   child: Stack(children: [
-                // Image.file(File('assets/1.jpg')),
+                // Image.file(File('assets/images/1.jpg')),
                 Center(
                     child: Icon(Icons.add_a_photo,
                         size: MediaQuery.of(context).size.width *
