@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../config.dart';
-import 'dart:io';
+import '../../data/prompt_handler.dart';
 
 class ChallengePage extends StatefulWidget {
   const ChallengePage({super.key});
@@ -10,10 +10,12 @@ class ChallengePage extends StatefulWidget {
 }
 
 class _ChallengePageState extends State<ChallengePage> {
+  final PromptHandler _promptHandler = PromptHandler();
+  
   void _submitChallenge() {}
   void _chooseImage() {}
   String _challengePrompt() {
-    return 'абебе';
+    return _promptHandler.generatePrompt();
   }
 
   @override
