@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'UI/pages/history.dart';
+import 'package:path_provider/path_provider.dart';
+import 'globals.dart' as globals;
 
-void main() {
+void main() async {
+  globals.documentsPath = (await getApplicationDocumentsDirectory()).path;
   runApp(const MyApp());
 }
 

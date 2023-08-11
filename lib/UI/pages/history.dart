@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:just_snap/data/classifier_handler.dart';
 import 'package:just_snap/data/history_handler.dart';
 import '../lists.dart';
 import 'package:just_snap/model.dart';
@@ -29,7 +30,18 @@ class _HistoryPageState extends State<HistoryPage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ChallengePage())),
+        onPressed: () async {
+          ClassifierHandler classifierHandler = ClassifierHandler();
+          await classifierHandler.load();
+          // ignore: use_build_context_synchronously
+          await Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ChallengePage(
+                        classifierHandler: classifierHandler,
+                      )));
+          classifierHandler.unload();
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add_a_photo),
       ),

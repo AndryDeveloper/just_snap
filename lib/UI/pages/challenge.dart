@@ -1,28 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:just_snap/data/classifier_handler.dart';
 import '../../config.dart';
 import '../../data/prompt_handler.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
+import '../../globals.dart' as globals;
 
 class ChallengePage extends StatefulWidget {
-  const ChallengePage({super.key});
+  late final ClassifierHandler _classifierHandler;
+
+  ChallengePage({super.key, required classifierHandler}) {
+    _classifierHandler = classifierHandler;
+  }
 
   @override
-  State<ChallengePage> createState() => _ChallengePageState();
+  // ignore: no_logic_in_create_state
+  State<ChallengePage> createState() => _ChallengePageState(_classifierHandler);
 }
 
 class _ChallengePageState extends State<ChallengePage> {
   final PromptHandler _promptHandler = PromptHandler();
   final ImagePicker _picker = ImagePicker();
-  
+  // ignore: unused_field
+  late final ClassifierHandler _classifierHandler;
+
+  _ChallengePageState(classifierHandler) {
+    _classifierHandler = classifierHandler;
+  }
+
   void _submitChallenge() {}
   Future<void> _chooseImage() async {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    final documentDirectory = await getApplicationDocumentsDirectory();
+
     if (image != null) {
-      await image.saveTo('${documentDirectory.path}/just_snap/possible_image.jpg');
+      await image.saveTo('${globals.documentsPath}/possible_image.jpg');
     }
   }
+
   String _challengePrompt() {
     return _promptHandler.generatePrompt();
   }
@@ -38,14 +51,14 @@ class _ChallengePageState extends State<ChallengePage> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               GestureDetector(
-                onTap: _chooseImage,
+                  onTap: _chooseImage,
                   child: Stack(children: [
-                // Image.file(File('assets/images/1.jpg')),
-                Center(
-                    child: Icon(Icons.add_a_photo,
-                        size: MediaQuery.of(context).size.width *
-                            PHOTO_ICON_REL_SIZE))
-              ])),
+                    // Image.file(File('assets/images/1.jpg')),
+                    Center(
+                        child: Icon(Icons.add_a_photo,
+                            size: MediaQuery.of(context).size.width *
+                                PHOTO_ICON_REL_SIZE))
+                  ])),
               Column(
                 children: [
                   const Text('Take a photo:'),
@@ -53,7 +66,8 @@ class _ChallengePageState extends State<ChallengePage> {
                 ],
               ),
               TextButton(
-                  onPressed: () => _submitChallenge(), child: const Text('Send'))
+                  onPressed: () => _submitChallenge(),
+                  child: const Text('Send'))
             ],
           ),
         ));

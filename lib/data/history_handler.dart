@@ -1,13 +1,14 @@
 import 'dart:io';
 import 'package:just_snap/model.dart';
 import 'package:csv/csv.dart';
+import '../globals.dart' as globals;
 
 class HistoryHandler {
   late List<Challenge> _challenges;
   late File _historyFile;
 
   HistoryHandler() {
-    _historyFile = File('assets/history.csv');
+    _historyFile = File('${globals.documentsPath}/history.csv');
     _challenges = [];
     if (!_historyFile.existsSync()) {
       _historyFile.createSync();
