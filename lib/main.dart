@@ -4,6 +4,7 @@ import 'package:path_provider/path_provider.dart';
 import 'globals.dart' as globals;
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   globals.documentsPath = (await getApplicationDocumentsDirectory()).path;
   runApp(const MyApp());
 }

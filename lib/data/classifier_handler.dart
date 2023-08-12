@@ -1,15 +1,14 @@
 import 'dart:io';
-import 'package:pytorch_lite/pytorch_lite.dart';
+import 'package:flutter_pytorch/flutter_pytorch.dart';
 import '../config.dart';
 
 class ClassifierHandler {
-  late final ClassificationModel? _classificationModel;
+  late ClassificationModel? _classificationModel;
 
   Future load() async {
-    return await Future(() => null);
-    // _classificationModel = await PytorchLite.loadClassificationModel(
-    //     CLASSIFIER_PATH, IMAGE_SIZE, IMAGE_SIZE, CLASSIFIER_NUM_CLASSES,
-    //     labelPath: LABEL_PATH);
+    _classificationModel = await FlutterPytorch.loadClassificationModel(
+        CLASSIFIER_PATH, IMAGE_SIZE, IMAGE_SIZE,
+        labelPath: LABELS_PATH);
   }
 
   void unload() {
@@ -19,7 +18,7 @@ class ClassifierHandler {
   Future<String> predict(String imagePath) async {
     if (_classificationModel == null) await load();
     return await _classificationModel!.getImagePrediction(
-        await File(imagePath).readAsBytes(),
+        File(imagePath).readAsBytesSync(),
         mean: CLASSIFIER_MEAN,
         std: CLASSIFIER_STD);
   }

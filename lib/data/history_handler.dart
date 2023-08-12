@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:just_snap/config.dart';
 import 'package:just_snap/model.dart';
 import 'package:csv/csv.dart';
 import '../globals.dart' as globals;
@@ -8,7 +9,7 @@ class HistoryHandler {
   late File _historyFile;
 
   HistoryHandler() {
-    _historyFile = File('${globals.documentsPath}/history.csv');
+    _historyFile = File('${globals.documentsPath}/$CHALLENGE_HISTORY_FNAME');
     _challenges = [];
     if (!_historyFile.existsSync()) {
       _historyFile.createSync();
@@ -23,9 +24,11 @@ class HistoryHandler {
     }
   }
 
-  void addEntry(Challenge el) {
-    _challenges.add(el);
-    _historyFile.writeAsStringSync('$el\n', mode: FileMode.append);
+  void addEntry(String prompt) {
+    Challenge challenge =
+        Challenge(_challenges.length, prompt, DateTime.now().toUtc());
+    _challenges.add(challenge);
+    _historyFile.writeAsStringSync('$challenge\n', mode: FileMode.append);
   }
 
   List<Challenge> get challenges => _challenges;

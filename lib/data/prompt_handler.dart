@@ -1,16 +1,26 @@
 import 'dart:io';
 import 'dart:math';
+import 'package:flutter/services.dart';
 import 'package:just_snap/config.dart';
 import '../globals.dart' as globals;
 
 class PromptHandler {
-  late File _promptFile;
-  late final List<String> _labels;
+  late final File _promptFile;
   late final Random _randomGenerator;
+  List<String>? _labels;
 
-  String generatePrompt() {
+  PromptHandler() {
+    _promptFile = File('${globals.documentsPath}/prompt.txt');
+    if (!_promptFile.existsSync()) {
+      _promptFile.createSync();
+    }
+    _randomGenerator = Random();
+  }
+
+  Future<String> generatePrompt() async {
+    _labels ??= (await rootBundle.loadString(LABELS_PATH)).split('\n');
     if (_promptFile.lengthSync() == 0) {
-      String prompt = _labels[_randomGenerator.nextInt(_labels.length)];
+      String prompt = _labels![_randomGenerator.nextInt(_labels!.length)];
       DateTime now = DateTime.now().toUtc();
       _promptFile.writeAsStringSync(
           '${DateTime(now.year, now.month, now.day).millisecondsSinceEpoch ~/ 1000}\n$prompt');
@@ -25,7 +35,7 @@ class PromptHandler {
       DateTime currentDate = DateTime(
           currentDateTime.year, currentDateTime.month, currentDateTime.day);
       if (date.isBefore(currentDate)) {
-        String prompt = _labels[_randomGenerator.nextInt(_labels.length)];
+        String prompt = _labels![_randomGenerator.nextInt(_labels!.length)];
         DateTime now = DateTime.now().toUtc();
         _promptFile.writeAsStringSync(
             '${DateTime(now.year, now.month, now.day).millisecondsSinceEpoch ~/ 1000}\n$prompt');
@@ -34,14 +44,5 @@ class PromptHandler {
         return currentPrompt;
       }
     }
-  }
-
-  PromptHandler() {
-    _promptFile = File('${globals.documentsPath}/prompt.txt');
-    if (!_promptFile.existsSync()) {
-      _promptFile.createSync();
-    }
-    _labels = File(LABEL_PATH).readAsLinesSync();
-    _randomGenerator = Random();
   }
 }
