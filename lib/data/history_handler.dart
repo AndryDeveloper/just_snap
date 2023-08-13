@@ -15,8 +15,9 @@ class HistoryHandler {
       _historyFile.createSync();
     } else {
       final rawData = _historyFile.readAsStringSync();
-      List<List<dynamic>> listData =
-          const CsvToListConverter(eol: '\n').convert(rawData);
+      List<List<dynamic>> listData = const CsvToListConverter(
+              eol: '\n', fieldDelimiter: CSV_FIELD_DELIMITER)
+          .convert(rawData);
       for (var el in listData) {
         _challenges.add(Challenge(
             el[0], el[1], DateTime.fromMillisecondsSinceEpoch(el[2] * 1000)));
@@ -29,6 +30,25 @@ class HistoryHandler {
         Challenge(_challenges.length, prompt, DateTime.now().toUtc());
     _challenges.add(challenge);
     _historyFile.writeAsStringSync('$challenge\n', mode: FileMode.append);
+  }
+
+  bool guessedToday() {
+    if (_challenges.isEmpty) {
+      return false;
+    } else {
+      DateTime guessedDateTime = _challenges.last.dateTime.toUtc();
+      DateTime guessedDate = DateTime.utc(
+          guessedDateTime.year, guessedDateTime.month, guessedDateTime.day);
+      DateTime currentDateTime = DateTime.now().toUtc();
+      DateTime currentDate = DateTime.utc(
+          currentDateTime.year, currentDateTime.month, currentDateTime.day);
+      
+      if (currentDate.isAtSameMomentAs(guessedDate)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 
   List<Challenge> get challenges => _challenges;

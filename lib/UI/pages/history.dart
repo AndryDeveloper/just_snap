@@ -41,6 +41,7 @@ class _HistoryPageState extends State<HistoryPage> {
                         classifierHandler: classifierHandler,
                       )));
           classifierHandler.unload();
+          setState(() {});
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add_a_photo),

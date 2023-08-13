@@ -1,3 +1,5 @@
+import 'config.dart';
+
 class Challenge {
   final int challengeId;
   final String prompt;
@@ -7,6 +9,6 @@ class Challenge {
 
   @override
   String toString() {
-    return '$challengeId,$prompt,${dateTime.millisecondsSinceEpoch ~/ 1000}';
+    return '$challengeId$CSV_FIELD_DELIMITER$prompt$CSV_FIELD_DELIMITER${dateTime.millisecondsSinceEpoch ~/ 1000}';
   }
 }
