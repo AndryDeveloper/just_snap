@@ -42,7 +42,7 @@ class HistoryHandler {
       DateTime currentDateTime = DateTime.now().toUtc();
       DateTime currentDate = DateTime.utc(
           currentDateTime.year, currentDateTime.month, currentDateTime.day);
-      
+
       if (currentDate.isAtSameMomentAs(guessedDate)) {
         return true;
       } else {

@@ -42,7 +42,7 @@ class ClassifierHandler {
       }
       return topPredictions;
     } else {
-      return Future(() => List.filled(TOP_K_PREDICTIONS, 'None'));
+      return Future(() => List.filled(TOP_K_PREDICTIONS, 'tarantula'));
     }
   }
 }

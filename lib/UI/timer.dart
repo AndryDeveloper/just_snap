@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:just_snap/globals.dart' as globals;
 
-
 class MyTimer extends StatelessWidget {
-  final Widget child;
+  final (Widget, Widget) children;
   final String name;
-  bool forceShowChild;
-  late int secondsLeft;
+  final bool forceShowChild;
 
-  MyTimer({required this.secondsLeft, required this.child, required this.name, required this.forceShowChild, super.key});
+  const MyTimer(
+      {required this.children,
+      required this.name,
+      required this.forceShowChild,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
     if (forceShowChild || !globals.timerHandler.checkTimer(name)) {
-      return child;
+      return children.$1;
     } else {
-      return Text('$secondsLeft');
+      return children.$2;
     }
   }
 }
-
-

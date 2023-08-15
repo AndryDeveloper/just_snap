@@ -1,104 +1,104 @@
 tench
 goldfish
-great_white_shark
-tiger_shark
+great white shark
+tiger shark
 hammerhead
-electric_ray
+electric ray
 stingray
 cock
 hen
 ostrich
 brambling
 goldfinch
-house_finch
+house finch
 junco
-indigo_bunting
+indigo bunting
 robin
 bulbul
 jay
 magpie
 chickadee
-water_ouzel
+water ouzel
 kite
-bald_eagle
+bald eagle
 vulture
-great_grey_owl
-European_fire_salamander
-common_newt
+great grey owl
+European fire salamander
+common newt
 eft
-spotted_salamander
+spotted salamander
 axolotl
 bullfrog
-tree_frog
-tailed_frog
+tree frog
+tailed frog
 loggerhead
-leatherback_turtle
-mud_turtle
+leatherback turtle
+mud turtle
 terrapin
-box_turtle
-banded_gecko
-common_iguana
-American_chameleon
+box turtle
+banded gecko
+common iguana
+American chameleon
 whiptail
 agama
-frilled_lizard
-alligator_lizard
-Gila_monster
-green_lizard
-African_chameleon
-Komodo_dragon
-African_crocodile
-American_alligator
+frilled lizard
+alligator lizard
+Gila monster
+green lizard
+African chameleon
+Komodo dragon
+African crocodile
+American alligator
 triceratops
-thunder_snake
-ringneck_snake
-hognose_snake
-green_snake
-king_snake
-garter_snake
-water_snake
-vine_snake
-night_snake
-boa_constrictor
-rock_python
-Indian_cobra
-green_mamba
-sea_snake
-horned_viper
+thunder snake
+ringneck snake
+hognose snake
+green snake
+king snake
+garter snake
+water snake
+vine snake
+night snake
+boa constrictor
+rock python
+Indian cobra
+green mamba
+sea snake
+horned viper
 diamondback
 sidewinder
 trilobite
 harvestman
 scorpion
-black_and_gold_garden_spider
-barn_spider
-garden_spider
-black_widow
+black and gold garden spider
+barn spider
+garden spider
+black widow
 tarantula
-wolf_spider
+wolf spider
 tick
 centipede
-black_grouse
+black grouse
 ptarmigan
-ruffed_grouse
-prairie_chicken
+ruffed grouse
+prairie chicken
 peacock
 quail
 partridge
-African_grey
+African grey
 macaw
-sulphur-crested_cockatoo
+sulphur-crested cockatoo
 lorikeet
 coucal
-bee_eater
+bee eater
 hornbill
 hummingbird
 jacamar
 toucan
 drake
-red-breasted_merganser
+red-breasted merganser
 goose
-black_swan
+black swan
 tusker
 echidna
 platypus
@@ -106,120 +106,120 @@ wallaby
 koala
 wombat
 jellyfish
-sea_anemone
-brain_coral
+sea anemone
+brain coral
 flatworm
 nematode
 conch
 snail
 slug
-sea_slug
+sea slug
 chiton
-chambered_nautilus
-Dungeness_crab
-rock_crab
-fiddler_crab
-king_crab
-American_lobster
-spiny_lobster
+chambered nautilus
+Dungeness crab
+rock crab
+fiddler crab
+king crab
+American lobster
+spiny lobster
 crayfish
-hermit_crab
+hermit crab
 isopod
-white_stork
-black_stork
+white stork
+black stork
 spoonbill
 flamingo
-little_blue_heron
-American_egret
+little blue heron
+American egret
 bittern
 crane
 limpkin
-European_gallinule
-American_coot
+European gallinule
+American coot
 bustard
-ruddy_turnstone
-red-backed_sandpiper
+ruddy turnstone
+red-backed sandpiper
 redshank
 dowitcher
 oystercatcher
 pelican
-king_penguin
+king penguin
 albatross
-grey_whale
-killer_whale
+grey whale
+killer whale
 dugong
-sea_lion
+sea lion
 Chihuahua
-Japanese_spaniel
-Maltese_dog
+Japanese spaniel
+Maltese dog
 Pekinese
 Shih-Tzu
-Blenheim_spaniel
+Blenheim spaniel
 papillon
-toy_terrier
-Rhodesian_ridgeback
-Afghan_hound
+toy terrier
+Rhodesian ridgeback
+Afghan hound
 basset
 beagle
 bloodhound
 bluetick
-black-and-tan_coonhound
-Walker_hound
-English_foxhound
+black-and-tan coonhound
+Walker hound
+English foxhound
 redbone
 borzoi
-Irish_wolfhound
-Italian_greyhound
+Irish wolfhound
+Italian greyhound
 whippet
-Ibizan_hound
-Norwegian_elkhound
+Ibizan hound
+Norwegian elkhound
 otterhound
 Saluki
-Scottish_deerhound
+Scottish deerhound
 Weimaraner
-Staffordshire_bullterrier
-American_Staffordshire_terrier
-Bedlington_terrier
-Border_terrier
-Kerry_blue_terrier
-Irish_terrier
-Norfolk_terrier
-Norwich_terrier
-Yorkshire_terrier
-wire-haired_fox_terrier
-Lakeland_terrier
-Sealyham_terrier
+Staffordshire bullterrier
+American Staffordshire terrier
+Bedlington terrier
+Border terrier
+Kerry blue terrier
+Irish terrier
+Norfolk terrier
+Norwich terrier
+Yorkshire terrier
+wire-haired fox terrier
+Lakeland terrier
+Sealyham terrier
 Airedale
 cairn
-Australian_terrier
-Dandie_Dinmont
-Boston_bull
-miniature_schnauzer
-giant_schnauzer
-standard_schnauzer
-Scotch_terrier
-Tibetan_terrier
-silky_terrier
-soft-coated_wheaten_terrier
-West_Highland_white_terrier
+Australian terrier
+Dandie Dinmont
+Boston bull
+miniature schnauzer
+giant schnauzer
+standard schnauzer
+Scotch terrier
+Tibetan terrier
+silky terrier
+soft-coated wheaten terrier
+West Highland white terrier
 Lhasa
-flat-coated_retriever
-curly-coated_retriever
-golden_retriever
-Labrador_retriever
-Chesapeake_Bay_retriever
-German_short-haired_pointer
+flat-coated retriever
+curly-coated retriever
+golden retriever
+Labrador retriever
+Chesapeake Bay retriever
+German short-haired pointer
 vizsla
-English_setter
-Irish_setter
-Gordon_setter
-Brittany_spaniel
+English setter
+Irish setter
+Gordon setter
+Brittany spaniel
 clumber
-English_springer
-Welsh_springer_spaniel
-cocker_spaniel
-Sussex_spaniel
-Irish_water_spaniel
+English springer
+Welsh springer spaniel
+cocker spaniel
+Sussex spaniel
+Irish water spaniel
 kuvasz
 schipperke
 groenendael
@@ -227,91 +227,91 @@ malinois
 briard
 kelpie
 komondor
-Old_English_sheepdog
-Shetland_sheepdog
+Old English sheepdog
+Shetland sheepdog
 collie
-Border_collie
-Bouvier_des_Flandres
+Border collie
+Bouvier des Flandres
 Rottweiler
-German_shepherd
+German shepherd
 Doberman
-miniature_pinscher
-Greater_Swiss_Mountain_dog
-Bernese_mountain_dog
+miniature pinscher
+Greater Swiss Mountain dog
+Bernese mountain dog
 Appenzeller
 EntleBucher
 boxer
-bull_mastiff
-Tibetan_mastiff
-French_bulldog
-Great_Dane
-Saint_Bernard
-Eskimo_dog
+bull mastiff
+Tibetan mastiff
+French bulldog
+Great Dane
+Saint Bernard
+Eskimo dog
 malamute
-Siberian_husky
+Siberian husky
 dalmatian
 affenpinscher
 basenji
 pug
 Leonberg
 Newfoundland
-Great_Pyrenees
+Great Pyrenees
 Samoyed
 Pomeranian
 chow
 keeshond
-Brabancon_griffon
+Brabancon griffon
 Pembroke
 Cardigan
-toy_poodle
-miniature_poodle
-standard_poodle
-Mexican_hairless
-timber_wolf
-white_wolf
-red_wolf
+toy poodle
+miniature poodle
+standard poodle
+Mexican hairless
+timber wolf
+white wolf
+red wolf
 coyote
 dingo
 dhole
-African_hunting_dog
+African hunting dog
 hyena
-red_fox
-kit_fox
-Arctic_fox
-grey_fox
+red fox
+kit fox
+Arctic fox
+grey fox
 tabby
-tiger_cat
-Persian_cat
-Siamese_cat
-Egyptian_cat
+tiger cat
+Persian cat
+Siamese cat
+Egyptian cat
 cougar
 lynx
 leopard
-snow_leopard
+snow leopard
 jaguar
 lion
 tiger
 cheetah
-brown_bear
-American_black_bear
-ice_bear
-sloth_bear
+brown bear
+American black bear
+ice bear
+sloth bear
 mongoose
 meerkat
-tiger_beetle
+tiger beetle
 ladybug
-ground_beetle
-long-horned_beetle
-leaf_beetle
-dung_beetle
-rhinoceros_beetle
+ground beetle
+long-horned beetle
+leaf beetle
+dung beetle
+rhinoceros beetle
 weevil
 fly
 bee
 ant
 grasshopper
 cricket
-walking_stick
+walking stick
 cockroach
 mantis
 cicada
@@ -322,29 +322,29 @@ damselfly
 admiral
 ringlet
 monarch
-cabbage_butterfly
-sulphur_butterfly
+cabbage butterfly
+sulphur butterfly
 lycaenid
 starfish
-sea_urchin
-sea_cucumber
-wood_rabbit
+sea urchin
+sea cucumber
+wood rabbit
 hare
 Angora
 hamster
 porcupine
-fox_squirrel
+fox squirrel
 marmot
 beaver
-guinea_pig
+guinea pig
 sorrel
 zebra
 hog
-wild_boar
+wild boar
 warthog
 hippopotamus
 ox
-water_buffalo
+water buffalo
 bison
 ram
 bighorn
@@ -352,17 +352,17 @@ ibex
 hartebeest
 impala
 gazelle
-Arabian_camel
+Arabian camel
 llama
 weasel
 mink
 polecat
-black-footed_ferret
+black-footed ferret
 otter
 skunk
 badger
 armadillo
-three-toed_sloth
+three-toed sloth
 orangutan
 gorilla
 chimpanzee
@@ -374,54 +374,54 @@ baboon
 macaque
 langur
 colobus
-proboscis_monkey
+proboscis monkey
 marmoset
 capuchin
-howler_monkey
+howler monkey
 titi
-spider_monkey
-squirrel_monkey
-Madagascar_cat
+spider monkey
+squirrel monkey
+Madagascar cat
 indri
-Indian_elephant
-African_elephant
-lesser_panda
-giant_panda
+Indian elephant
+African elephant
+lesser panda
+giant panda
 barracouta
 eel
 coho
-rock_beauty
-anemone_fish
+rock beauty
+anemone fish
 sturgeon
 gar
 lionfish
 puffer
 abacus
 abaya
-academic_gown
+academic gown
 accordion
-acoustic_guitar
-aircraft_carrier
+acoustic guitar
+aircraft carrier
 airliner
 airship
 altar
 ambulance
 amphibian
-analog_clock
+analog clock
 apiary
 apron
 ashcan
-assault_rifle
+assault rifle
 backpack
 bakery
-balance_beam
+balance beam
 balloon
 ballpoint
-Band_Aid
+Band Aid
 banjo
 bannister
 barbell
-barber_chair
+barber chair
 barbershop
 barn
 barometer
@@ -431,16 +431,16 @@ baseball
 basketball
 bassinet
 bassoon
-bathing_cap
-bath_towel
+bathing cap
+bath towel
 bathtub
-beach_wagon
+beach wagon
 beacon
 beaker
 bearskin
-beer_bottle
-beer_glass
-bell_cote
+beer bottle
+beer glass
+bell cote
 bib
 bicycle-built-for-two
 bikini
@@ -449,13 +449,13 @@ binoculars
 birdhouse
 boathouse
 bobsled
-bolo_tie
+bolo tie
 bonnet
 bookcase
 bookshop
 bottlecap
 bow
-bow_tie
+bow tie
 brass
 brassiere
 breakwater
@@ -463,145 +463,145 @@ breastplate
 broom
 bucket
 buckle
-bulletproof_vest
-bullet_train
-butcher_shop
+bulletproof vest
+bullet train
+butcher shop
 cab
 caldron
 candle
 cannon
 canoe
-can_opener
+can opener
 cardigan
-car_mirror
+car mirror
 carousel
-carpenter's_kit
+carpenter's kit
 carton
-car_wheel
-cash_machine
+car wheel
+cash machine
 cassette
-cassette_player
+cassette player
 castle
 catamaran
-CD_player
+CD player
 cello
-cellular_telephone
+cellular telephone
 chain
-chainlink_fence
-chain_mail
-chain_saw
+chainlink fence
+chain mail
+chain saw
 chest
 chiffonier
 chime
-china_cabinet
-Christmas_stocking
+china cabinet
+Christmas stocking
 church
 cinema
 cleaver
-cliff_dwelling
+cliff dwelling
 cloak
 clog
-cocktail_shaker
-coffee_mug
+cocktail shaker
+coffee mug
 coffeepot
 coil
-combination_lock
-computer_keyboard
+combination lock
+computer keyboard
 confectionery
-container_ship
+container ship
 convertible
 corkscrew
 cornet
-cowboy_boot
-cowboy_hat
+cowboy boot
+cowboy hat
 cradle
 crane
-crash_helmet
+crash helmet
 crate
 crib
-Crock_Pot
-croquet_ball
+Crock Pot
+croquet ball
 crutch
 cuirass
 dam
 desk
-desktop_computer
-dial_telephone
+desktop computer
+dial telephone
 diaper
-digital_clock
-digital_watch
-dining_table
+digital clock
+digital watch
+dining table
 dishrag
 dishwasher
-disk_brake
+disk brake
 dock
 dogsled
 dome
 doormat
-drilling_platform
+drilling platform
 drum
 drumstick
 dumbbell
-Dutch_oven
-electric_fan
-electric_guitar
-electric_locomotive
-entertainment_center
+Dutch oven
+electric fan
+electric guitar
+electric locomotive
+entertainment center
 envelope
-espresso_maker
-face_powder
-feather_boa
+espresso maker
+face powder
+feather boa
 file
 fireboat
-fire_engine
-fire_screen
+fire engine
+fire screen
 flagpole
 flute
-folding_chair
-football_helmet
+folding chair
+football helmet
 forklift
 fountain
-fountain_pen
+fountain pen
 four-poster
-freight_car
-French_horn
-frying_pan
-fur_coat
-garbage_truck
+freight car
+French horn
+frying pan
+fur coat
+garbage truck
 gasmask
-gas_pump
+gas pump
 goblet
 go-kart
-golf_ball
+golf ball
 golfcart
 gondola
 gong
 gown
-grand_piano
+grand piano
 greenhouse
 grille
-grocery_store
+grocery store
 guillotine
-hair_slide
-hair_spray
-half_track
+hair slide
+hair spray
+half track
 hammer
 hamper
-hand_blower
-hand-held_computer
+hand blower
+hand-held computer
 handkerchief
-hard_disc
+hard disc
 harmonica
 harp
 harvester
 hatchet
 holster
-home_theater
+home theater
 honeycomb
 hook
 hoopskirt
-horizontal_bar
-horse_cart
+horizontal bar
+horse cart
 hourglass
 iPod
 iron
@@ -609,19 +609,19 @@ jack-o'-lantern
 jean
 jeep
 jersey
-jigsaw_puzzle
+jigsaw puzzle
 jinrikisha
 joystick
 kimono
-knee_pad
+knee pad
 knot
-lab_coat
+lab coat
 ladle
 lampshade
 laptop
-lawn_mower
-lens_cap
-letter_opener
+lawn mower
+lens cap
+letter opener
 library
 lifeboat
 lighter
@@ -633,33 +633,33 @@ lotion
 loudspeaker
 loupe
 lumbermill
-magnetic_compass
+magnetic compass
 mailbag
 mailbox
 maillot
 maillot
-manhole_cover
+manhole cover
 maraca
 marimba
 mask
 matchstick
 maypole
 maze
-measuring_cup
-medicine_chest
+measuring cup
+medicine chest
 megalith
 microphone
 microwave
-military_uniform
-milk_can
+military uniform
+milk can
 minibus
 miniskirt
 minivan
 missile
 mitten
-mixing_bowl
-mobile_home
-Model_T
+mixing bowl
+mobile home
+Model T
 modem
 monastery
 monitor
@@ -667,16 +667,16 @@ moped
 mortar
 mortarboard
 mosque
-mosquito_net
-motor_scooter
-mountain_bike
-mountain_tent
+mosquito net
+motor scooter
+mountain bike
+mountain tent
 mouse
 mousetrap
-moving_van
+moving van
 muzzle
 nail
-neck_brace
+neck brace
 necklace
 nipple
 notebook
@@ -684,12 +684,12 @@ obelisk
 oboe
 ocarina
 odometer
-oil_filter
+oil filter
 organ
 oscilloscope
 overskirt
 oxcart
-oxygen_mask
+oxygen mask
 packet
 paddle
 paddlewheel
@@ -698,54 +698,54 @@ paintbrush
 pajama
 palace
 panpipe
-paper_towel
+paper towel
 parachute
-parallel_bars
-park_bench
-parking_meter
-passenger_car
+parallel bars
+park bench
+parking meter
+passenger car
 patio
 pay-phone
 pedestal
-pencil_box
-pencil_sharpener
+pencil box
+pencil sharpener
 perfume
-Petri_dish
+Petri dish
 photocopier
 pick
 pickelhaube
-picket_fence
+picket fence
 pickup
 pier
-piggy_bank
-pill_bottle
+piggy bank
+pill bottle
 pillow
-ping-pong_ball
+ping-pong ball
 pinwheel
 pirate
 pitcher
 plane
 planetarium
-plastic_bag
-plate_rack
+plastic bag
+plate rack
 plow
 plunger
-Polaroid_camera
+Polaroid camera
 pole
-police_van
+police van
 poncho
-pool_table
-pop_bottle
+pool table
+pop bottle
 pot
-potter's_wheel
-power_drill
-prayer_rug
+potter's wheel
+power drill
+prayer rug
 printer
 prison
 projectile
 projector
 puck
-punching_bag
+punching bag
 purse
 quill
 quilt
@@ -753,83 +753,83 @@ racer
 racket
 radiator
 radio
-radio_telescope
-rain_barrel
-recreational_vehicle
+radio telescope
+rain barrel
+recreational vehicle
 reel
-reflex_camera
+reflex camera
 refrigerator
-remote_control
+remote control
 restaurant
 revolver
 rifle
-rocking_chair
+rocking chair
 rotisserie
-rubber_eraser
-rugby_ball
+rubber eraser
+rugby ball
 rule
-running_shoe
+running shoe
 safe
-safety_pin
+safety pin
 saltshaker
 sandal
 sarong
 sax
 scabbard
 scale
-school_bus
+school bus
 schooner
 scoreboard
 screen
 screw
 screwdriver
-seat_belt
-sewing_machine
+seat belt
+sewing machine
 shield
-shoe_shop
+shoe shop
 shoji
-shopping_basket
-shopping_cart
+shopping basket
+shopping cart
 shovel
-shower_cap
-shower_curtain
+shower cap
+shower curtain
 ski
-ski_mask
-sleeping_bag
-slide_rule
-sliding_door
+ski mask
+sleeping bag
+slide rule
+sliding door
 slot
 snorkel
 snowmobile
 snowplow
-soap_dispenser
-soccer_ball
+soap dispenser
+soccer ball
 sock
-solar_dish
+solar dish
 sombrero
-soup_bowl
-space_bar
-space_heater
-space_shuttle
+soup bowl
+space bar
+space heater
+space shuttle
 spatula
 speedboat
-spider_web
+spider web
 spindle
-sports_car
+sports car
 spotlight
 stage
-steam_locomotive
-steel_arch_bridge
-steel_drum
+steam locomotive
+steel arch bridge
+steel drum
 stethoscope
 stole
-stone_wall
+stone wall
 stopwatch
 stove
 strainer
 streetcar
 stretcher
-studio_couch
+studio couch
 stupa
 submarine
 suit
@@ -837,46 +837,46 @@ sundial
 sunglass
 sunglasses
 sunscreen
-suspension_bridge
+suspension bridge
 swab
 sweatshirt
-swimming_trunks
+swimming trunks
 swing
 switch
 syringe
-table_lamp
+table lamp
 tank
-tape_player
+tape player
 teapot
 teddy
 television
-tennis_ball
+tennis ball
 thatch
-theater_curtain
+theater curtain
 thimble
 thresher
 throne
-tile_roof
+tile roof
 toaster
-tobacco_shop
-toilet_seat
+tobacco shop
+toilet seat
 torch
-totem_pole
-tow_truck
+totem pole
+tow truck
 toyshop
 tractor
-trailer_truck
+trailer truck
 tray
-trench_coat
+trench coat
 tricycle
 trimaran
 tripod
-triumphal_arch
+triumphal arch
 trolleybus
 trombone
 tub
 turnstile
-typewriter_keyboard
+typewriter keyboard
 umbrella
 unicycle
 upright
@@ -884,69 +884,69 @@ vacuum
 vase
 vault
 velvet
-vending_machine
+vending machine
 vestment
 viaduct
 violin
 volleyball
-waffle_iron
-wall_clock
+waffle iron
+wall clock
 wallet
 wardrobe
 warplane
 washbasin
 washer
-water_bottle
-water_jug
-water_tower
-whiskey_jug
+water bottle
+water jug
+water tower
+whiskey jug
 whistle
 wig
-window_screen
-window_shade
-Windsor_tie
-wine_bottle
+window screen
+window shade
+Windsor tie
+wine bottle
 wing
 wok
-wooden_spoon
+wooden spoon
 wool
-worm_fence
+worm fence
 wreck
 yawl
 yurt
-web_site
-comic_book
-crossword_puzzle
-street_sign
-traffic_light
-book_jacket
+web site
+comic book
+crossword puzzle
+street sign
+traffic light
+book jacket
 menu
 plate
 guacamole
 consomme
-hot_pot
+hot pot
 trifle
-ice_cream
-ice_lolly
-French_loaf
+ice cream
+ice lolly
+French loaf
 bagel
 pretzel
 cheeseburger
 hotdog
-mashed_potato
-head_cabbage
+mashed potato
+head cabbage
 broccoli
 cauliflower
 zucchini
-spaghetti_squash
-acorn_squash
-butternut_squash
+spaghetti squash
+acorn squash
+butternut squash
 cucumber
 artichoke
-bell_pepper
+bell pepper
 cardoon
 mushroom
-Granny_Smith
+Granny Smith
 strawberry
 orange
 lemon
@@ -954,24 +954,24 @@ fig
 pineapple
 banana
 jackfruit
-custard_apple
+custard apple
 pomegranate
 hay
 carbonara
-chocolate_sauce
+chocolate sauce
 dough
-meat_loaf
+meat loaf
 pizza
 potpie
 burrito
-red_wine
+red wine
 espresso
 cup
 eggnog
 alp
 bubble
 cliff
-coral_reef
+coral reef
 geyser
 lakeside
 promontory
@@ -981,15 +981,15 @@ valley
 volcano
 ballplayer
 groom
-scuba_diver
+scuba diver
 rapeseed
 daisy
-yellow_lady's_slipper
+yellow lady's slipper
 corn
 acorn
 hip
 buckeye
-coral_fungus
+coral fungus
 agaric
 gyromitra
 stinkhorn
@@ -997,4 +997,4 @@ earthstar
 hen-of-the-woods
 bolete
 ear
-toilet_tissue
+toilet tissue

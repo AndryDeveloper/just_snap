@@ -8,6 +8,7 @@ class TimerHandler {
   late final File _timerFile;
   final Map<String, int> _timersExpDateTime = {};
   final Map<String, Map<int, Function(int)>> _timersCallbacks = {};
+  final Map<String, List<Timer>> _timers = {};
 
   TimerHandler() {
     _timerFile = File('${globals.documentsPath}/$TIMER_HISTORY_FNAME');
@@ -22,10 +23,15 @@ class TimerHandler {
           Duration duration = DateTime.fromMillisecondsSinceEpoch(element.value)
               .difference(DateTime.now().toUtc());
           if (duration.inSeconds > 0) {
+            if (!_timers.containsKey(element.key)) {
+              _timers[element.key] = [];
+            }
             Timer timerPeriodic = Timer.periodic(
                 const Duration(seconds: TIMER_CALLBACK_EVERY),
                 (Timer t) => handleTimerTick(element.key));
-            Timer(duration, () => handleTimeout(element.key, timerPeriodic));
+            _timers[element.key]!.add(timerPeriodic);
+            _timers[element.key]!
+                .add(Timer(duration, () => handleTimeout(element.key)));
           } else {
             _timersExpDateTime[element.key] = -1;
           }
@@ -53,10 +59,15 @@ class TimerHandler {
   void createTimer(String name, Duration duration) {
     _timersExpDateTime[name] =
         DateTime.now().toUtc().add(duration).millisecondsSinceEpoch;
+
+    if (!_timers.containsKey(name)) {
+      _timers[name] = [];
+    }
     Timer timerPeriodic = Timer.periodic(
         const Duration(seconds: TIMER_CALLBACK_EVERY),
         (Timer t) => handleTimerTick(name));
-    Timer(duration, () => handleTimeout(name, timerPeriodic));
+    _timers[name]!.add(timerPeriodic);
+    _timers[name]!.add(Timer(duration, () => handleTimeout(name)));
     _timerFile.writeAsStringSync(json.encode(_timersExpDateTime));
     handleTimerTick(name);
   }
@@ -89,14 +100,22 @@ class TimerHandler {
     }
   }
 
-  void handleTimeout(String name, Timer timerPeriodic) {
-    timerPeriodic.cancel();
+  void handleTimeout(String name) {
+    if (_timers.containsKey(name)) {
+      for (final t in _timers[name]!) {
+        t.cancel();
+      }
+      _timers.remove(name);
+    }
+
     if (_timersCallbacks.containsKey(name)) {
       for (Function(int) callback in _timersCallbacks[name]!.values) {
         callback(0);
       }
     }
-    // _timersCallbacks.remove(name);
-    _timersExpDateTime.remove(name);
+
+    if (_timersExpDateTime.containsKey(name)) {
+      _timersExpDateTime.remove(name);
+    }
   }
 }

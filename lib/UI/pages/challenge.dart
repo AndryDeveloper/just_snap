@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:just_snap/UI/lock_screens.dart';
 import 'package:just_snap/data/classifier_handler.dart';
 import 'package:just_snap/data/history_handler.dart';
 import '../../config.dart';
@@ -32,6 +33,7 @@ class _ChallengePageState extends State<ChallengePage> {
   late int secondsLeftPage;
   late bool forceShowPic;
   late int secondsLeftPic;
+  String _guessedWord = GUESSES_WORD_PLACEHOLDER;
 
   _ChallengePageState(classifierHandler) {
     forceShowPage = !_historyHandler.guessedToday();
@@ -44,13 +46,14 @@ class _ChallengePageState extends State<ChallengePage> {
 
   @override
   void initState() {
-    globals.timerHandler.addCallback(
-        PROMPT_TIMER,
-        (int p) => setState(() {
-              forceShowPage = !_historyHandler.guessedToday();
-              secondsLeftPage = p;
-            }),
-        0);
+    globals.timerHandler.addCallback(PROMPT_TIMER, (int p) {
+      if (_historyHandler.guessedToday()) {
+        setState(() {
+          forceShowPage = !_historyHandler.guessedToday();
+          secondsLeftPage = p;
+        });
+      }
+    }, 0);
     globals.timerHandler.addCallback(
         SEND_TIMER,
         (int p) => setState(() {
@@ -70,13 +73,14 @@ class _ChallengePageState extends State<ChallengePage> {
   void _submitChallenge() async {
     List<String> prediction = await _classifierHandler
         .predict('${globals.documentsPath}/$TEMP_IMAGE_FNAME');
+    _guessedWord = prediction[0];
     if (prediction.contains(_prompt)) {
       _historyHandler.addEntry(_prompt);
       // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } else {
-      // ignore: avoid_print
-      globals.timerHandler.createTimer(SEND_TIMER, const Duration(seconds: TIMER_DURATION_AFTER_FAIL));
+      globals.timerHandler.createTimer(
+          SEND_TIMER, const Duration(seconds: TIMER_DURATION_AFTER_FAIL));
     }
   }
 
@@ -96,6 +100,10 @@ class _ChallengePageState extends State<ChallengePage> {
     setState(() => _prompt = prompt);
   }
 
+  void _wathAD() {
+    globals.timerHandler.handleTimeout(SEND_TIMER);
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_prompt == PROMPT_PLACEHOLDER) {
@@ -109,47 +117,59 @@ class _ChallengePageState extends State<ChallengePage> {
           child: MyTimer(
               name: PROMPT_TIMER,
               forceShowChild: forceShowPage,
-              secondsLeft: secondsLeftPage,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  MyTimer(
-                      secondsLeft: secondsLeftPic,
-                      name: SEND_TIMER,
-                      forceShowChild: forceShowPic,
-                      child: GestureDetector(
-                          onTap: _chooseImage,
-                          child: Stack(
-                              alignment: AlignmentDirectional.center,
-                              children: ((_imageBytes != null)
-                                      ? <Widget>[
-                                          Image.memory(_imageBytes!,
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  CHALLENGE_IMAGE_REL_HEIGHT,
-                                              fit: BoxFit.contain)
-                                        ]
-                                      : <Widget>[]) +
-                                  [
-                                    Icon(
-                                      Icons.add_a_photo,
-                                      size: MediaQuery.of(context).size.width *
-                                          PHOTO_ICON_REL_SIZE,
-                                      color: Colors.black
-                                          .withOpacity(PHOTO_ICON_OPACITY),
-                                    ),
-                                  ]))),
-                  Column(
-                    children: [
-                      const Text('Take a photo:'),
-                      Text(_prompt),
-                    ],
-                  ),
-                  TextButton(
-                      onPressed: () => _submitChallenge(),
-                      child: const Text('Send'))
-                ],
+              children: (
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    MyTimer(
+                        name: SEND_TIMER,
+                        forceShowChild: forceShowPic,
+                        children: (
+                          GestureDetector(
+                              onTap: _chooseImage,
+                              child: Stack(
+                                  alignment: AlignmentDirectional.center,
+                                  children: ((_imageBytes != null)
+                                          ? <Widget>[
+                                              Image.memory(_imageBytes!,
+                                                  height: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      CHALLENGE_IMAGE_REL_HEIGHT,
+                                                  fit: BoxFit.contain)
+                                            ]
+                                          : <Widget>[]) +
+                                      [
+                                        Icon(
+                                          Icons.add_a_photo,
+                                          size: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              PHOTO_ICON_REL_SIZE,
+                                          color: Colors.black
+                                              .withOpacity(PHOTO_ICON_OPACITY),
+                                        ),
+                                      ])),
+                          Center(
+                              child: LockLoseWidget(
+                            secondsLeft: secondsLeftPic,
+                            guessedWord: _guessedWord,
+                            prompt: _prompt,
+                            button: TextButton(
+                                onPressed: _wathAD, child: const Text('AD')),
+                          ))
+                        )),
+                    Column(
+                      children: [
+                        const Text('Take a photo:'),
+                        Text(_prompt),
+                      ],
+                    ),
+                    TextButton(
+                        onPressed: _submitChallenge, child: const Text('Send'))
+                  ],
+                ),
+                Center(child: LockWinWidget(secondsLeft: secondsLeftPage))
               )),
         ));
   }
