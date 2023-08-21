@@ -29,6 +29,8 @@ class HistoryHandler {
     Challenge challenge =
         Challenge(_challenges.length, prompt, DateTime.now().toUtc());
     _challenges.add(challenge);
+    File('${globals.documentsPath}/$TEMP_IMAGE_FNAME').copySync(
+        '${globals.documentsPath}/$IMAGES_PATH/${_challenges.length}.jpg');
     _historyFile.writeAsStringSync('$challenge\n', mode: FileMode.append);
   }
 

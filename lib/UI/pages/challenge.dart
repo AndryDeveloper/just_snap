@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:just_snap/UI/lock_screens.dart';
 import 'package:just_snap/data/classifier_handler.dart';
 import 'package:just_snap/data/history_handler.dart';
@@ -33,6 +35,8 @@ class _ChallengePageState extends State<ChallengePage> {
   late int secondsLeftPage;
   late bool forceShowPic;
   late int secondsLeftPic;
+  late StreamSubscription<InternetConnectionStatus> connectionListener;
+  bool _isConnected = false;
   String _guessedWord = GUESSES_WORD_PLACEHOLDER;
 
   _ChallengePageState(classifierHandler) {
@@ -46,6 +50,11 @@ class _ChallengePageState extends State<ChallengePage> {
 
   @override
   void initState() {
+    File tempFile = File('${globals.documentsPath}/$TEMP_IMAGE_FNAME');
+    if (tempFile.existsSync()) {
+      tempFile.deleteSync();
+    }
+
     globals.timerHandler.addCallback(PROMPT_TIMER, (int p) {
       if (_historyHandler.guessedToday()) {
         setState(() {
@@ -60,32 +69,50 @@ class _ChallengePageState extends State<ChallengePage> {
               secondsLeftPic = p;
             }),
         1);
+
+    connectionListener =
+        InternetConnectionChecker().onStatusChange.listen((status) {
+      setState(() {
+        _isConnected = status == InternetConnectionStatus.connected;
+      });
+      _getChallengePrompt();
+    });
     super.initState();
   }
 
   @override
   void dispose() {
+    File tempFile = File('${globals.documentsPath}/$TEMP_IMAGE_FNAME');
+    if (tempFile.existsSync()) {
+      tempFile.deleteSync();
+    }
+
     globals.timerHandler.removeCallback(PROMPT_TIMER, 0);
     globals.timerHandler.removeCallback(SEND_TIMER, 1);
+    connectionListener.cancel();
     super.dispose();
   }
 
   void _submitChallenge() async {
-    List<String> prediction = await _classifierHandler
-        .predict('${globals.documentsPath}/$TEMP_IMAGE_FNAME');
-    _guessedWord = prediction[0];
-    if (prediction.contains(_prompt)) {
-      _historyHandler.addEntry(_prompt);
-      // ignore: use_build_context_synchronously
-      Navigator.pop(context);
-    } else {
-      globals.timerHandler.createTimer(
-          SEND_TIMER, const Duration(seconds: TIMER_DURATION_AFTER_FAIL));
+    if (File('${globals.documentsPath}/$TEMP_IMAGE_FNAME').existsSync() &&
+        !globals.timerHandler.checkTimer(SEND_TIMER)) {
+      List<String> prediction = await _classifierHandler
+          .predict('${globals.documentsPath}/$TEMP_IMAGE_FNAME');
+      _guessedWord = prediction[0];
+      if (prediction.contains(_prompt)) {
+        _historyHandler.addEntry(_prompt);
+        // ignore: use_build_context_synchronously
+        Navigator.pop(context);
+      } else {
+        globals.timerHandler.createTimer(
+            SEND_TIMER, const Duration(seconds: TIMER_DURATION_AFTER_FAIL));
+      }
     }
   }
 
   Future<void> _chooseImage() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+    final XFile? image = await _picker.pickImage(
+        source: Platform.isWindows ? ImageSource.gallery : ImageSource.gallery);
     if (image != null) {
       await image.saveTo('${globals.documentsPath}/$TEMP_IMAGE_FNAME');
       setState(() {
@@ -96,7 +123,7 @@ class _ChallengePageState extends State<ChallengePage> {
   }
 
   Future<void> _getChallengePrompt() async {
-    String prompt = await _promptHandler.generatePrompt();
+    String prompt = await _promptHandler.generatePrompt(_isConnected);
     setState(() => _prompt = prompt);
   }
 
@@ -155,8 +182,11 @@ class _ChallengePageState extends State<ChallengePage> {
                             secondsLeft: secondsLeftPic,
                             guessedWord: _guessedWord,
                             prompt: _prompt,
-                            button: TextButton(
-                                onPressed: _wathAD, child: const Text('AD')),
+                            button: _isConnected
+                                ? TextButton(
+                                    onPressed: _wathAD,
+                                    child: const Text('Watch AD to skip'))
+                                : const SizedBox.shrink(),
                           ))
                         )),
                     Column(

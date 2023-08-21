@@ -20,6 +20,7 @@ const TEMP_IMAGE_FNAME = 'possible_image.jpg';
 const CHALLENGE_HISTORY_FNAME = 'history.csv';
 const TIMER_HISTORY_FNAME = 'timer.json';
 const PROMPT_FNAME = 'prompt.txt';
+const IMAGES_PATH = 'images';
 
 // timer
 const PROMPT_TIMER = "prompt_timer";

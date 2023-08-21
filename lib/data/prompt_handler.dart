@@ -15,7 +15,7 @@ class PromptHandler {
     _randomGenerator = Random();
   }
 
-  Future<String> generatePrompt() async {
+  Future<String> generatePrompt(_isConnected) async {
     if (_promptFile.lengthSync() == 0 ||
         !globals.timerHandler.checkTimer(PROMPT_TIMER)) {
       //Starting timer
@@ -34,5 +34,9 @@ class PromptHandler {
     } else {
       return _promptFile.readAsStringSync();
     }
+  }
+
+  Future<String> generateDesc() async {
+    return 's';
   }
 }
