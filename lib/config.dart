@@ -21,6 +21,7 @@ const CHALLENGE_HISTORY_FNAME = 'history.csv';
 const TIMER_HISTORY_FNAME = 'timer.json';
 const PROMPT_FNAME = 'prompt.txt';
 const IMAGES_PATH = 'images';
+const LANGUAGE_FNAME = 'language.txt';
 
 // timer
 const PROMPT_TIMER = "prompt_timer";
@@ -30,3 +31,4 @@ const TIMER_DURATION_AFTER_FAIL = 20 * 60;
 
 // other
 const CSV_FIELD_DELIMITER = ';';
+const DEFAULT_LANGUAGE = 'en';

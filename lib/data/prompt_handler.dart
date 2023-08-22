@@ -15,7 +15,8 @@ class PromptHandler {
     _randomGenerator = Random();
   }
 
-  Future<String> generatePrompt(_isConnected) async {
+  Future<String> generatePrompt(isConnected) async {
+    if (isConnected) {}
     if (_promptFile.lengthSync() == 0 ||
         !globals.timerHandler.checkTimer(PROMPT_TIMER)) {
       //Starting timer

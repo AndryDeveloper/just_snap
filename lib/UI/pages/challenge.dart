@@ -1,11 +1,12 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:just_snap/UI/lock_screens.dart';
 import 'package:just_snap/data/classifier_handler.dart';
 import 'package:just_snap/data/history_handler.dart';
+import 'package:just_snap/data/language_handler.dart';
 import '../../config.dart';
 import '../../data/prompt_handler.dart';
 import 'package:image_picker/image_picker.dart';
@@ -13,23 +14,22 @@ import '../../globals.dart' as globals;
 import 'package:just_snap/UI/timer.dart';
 
 class ChallengePage extends StatefulWidget {
-  late final ClassifierHandler _classifierHandler;
-
-  ChallengePage({super.key, required classifierHandler}) {
-    _classifierHandler = classifierHandler;
-  }
+  final LanduageHandler languageHandler;
+  const ChallengePage({super.key, required this.languageHandler});
 
   @override
   // ignore: no_logic_in_create_state
-  State<ChallengePage> createState() => _ChallengePageState(_classifierHandler);
+  State<ChallengePage> createState() => _ChallengePageState(languageHandler);
 }
 
 class _ChallengePageState extends State<ChallengePage> {
   final PromptHandler _promptHandler = PromptHandler();
   final HistoryHandler _historyHandler = HistoryHandler();
+  late final LanduageHandler _languageHandler;
+  final ClassifierHandler _classifierHandler = ClassifierHandler();
   final ImagePicker _picker = ImagePicker();
-  late final ClassifierHandler _classifierHandler;
-  String _prompt = PROMPT_PLACEHOLDER;
+  String? _prompt;
+  List<String>? _labels;
   Uint8List? _imageBytes;
   late bool forceShowPage;
   late int secondsLeftPage;
@@ -37,15 +37,15 @@ class _ChallengePageState extends State<ChallengePage> {
   late int secondsLeftPic;
   late StreamSubscription<InternetConnectionStatus> connectionListener;
   bool _isConnected = false;
-  String _guessedWord = GUESSES_WORD_PLACEHOLDER;
+  String? _guessedWord;
 
-  _ChallengePageState(classifierHandler) {
+  _ChallengePageState(languageHandler) {
+    _languageHandler = languageHandler;
     forceShowPage = !_historyHandler.guessedToday();
     secondsLeftPage =
         globals.timerHandler.timerDuration(PROMPT_TIMER).inSeconds;
     forceShowPic = false;
     secondsLeftPic = globals.timerHandler.timerDuration(SEND_TIMER).inSeconds;
-    _classifierHandler = classifierHandler;
   }
 
   @override
@@ -95,12 +95,14 @@ class _ChallengePageState extends State<ChallengePage> {
 
   void _submitChallenge() async {
     if (File('${globals.documentsPath}/$TEMP_IMAGE_FNAME').existsSync() &&
-        !globals.timerHandler.checkTimer(SEND_TIMER)) {
+        !globals.timerHandler.checkTimer(SEND_TIMER) &&
+        _classifierHandler.modelLoaded) {
       List<String> prediction = await _classifierHandler
           .predict('${globals.documentsPath}/$TEMP_IMAGE_FNAME');
+
       _guessedWord = prediction[0];
       if (prediction.contains(_prompt)) {
-        _historyHandler.addEntry(_prompt);
+        _historyHandler.addEntry(_prompt!);
         // ignore: use_build_context_synchronously
         Navigator.pop(context);
       } else {
@@ -123,6 +125,8 @@ class _ChallengePageState extends State<ChallengePage> {
   }
 
   Future<void> _getChallengePrompt() async {
+    _labels =
+        (await rootBundle.loadString(_languageHandler.labelsPath)).split('\n');
     String prompt = await _promptHandler.generatePrompt(_isConnected);
     setState(() => _prompt = prompt);
   }
@@ -138,7 +142,17 @@ class _ChallengePageState extends State<ChallengePage> {
     }
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Load your picture'),
+          title: Text(_languageHandler.loadPictureText),
+          actions: <Widget>[
+            TextButton(
+                onPressed: () async {
+                  _languageHandler.language =
+                      _languageHandler.language == 'ru' ? 'en' : 'ru';
+                  await _getChallengePrompt();
+                  setState(() {});
+                },
+                child: Text(_languageHandler.language))
+          ],
         ),
         body: Center(
           child: MyTimer(
@@ -179,27 +193,38 @@ class _ChallengePageState extends State<ChallengePage> {
                                       ])),
                           Center(
                               child: LockLoseWidget(
+                            landuageHandler: _languageHandler,
                             secondsLeft: secondsLeftPic,
-                            guessedWord: _guessedWord,
-                            prompt: _prompt,
+                            guessedWord: _guessedWord == null
+                                ? GUESSES_WORD_PLACEHOLDER
+                                : _labels![int.parse(_guessedWord!)],
+                            prompt: _prompt == null
+                                ? PROMPT_PLACEHOLDER
+                                : _labels![int.parse(_prompt!)],
                             button: _isConnected
                                 ? TextButton(
                                     onPressed: _wathAD,
-                                    child: const Text('Watch AD to skip'))
+                                    child: Text(_languageHandler.wathADText))
                                 : const SizedBox.shrink(),
                           ))
                         )),
                     Column(
                       children: [
-                        const Text('Take a photo:'),
-                        Text(_prompt),
+                        Text(_languageHandler.takePictureText),
+                        Text(_prompt == null
+                            ? PROMPT_PLACEHOLDER
+                            : _labels![int.parse(_prompt!)]),
                       ],
                     ),
                     TextButton(
-                        onPressed: _submitChallenge, child: const Text('Send'))
+                        onPressed: _submitChallenge,
+                        child: Text(_languageHandler.sendText))
                   ],
                 ),
-                Center(child: LockWinWidget(secondsLeft: secondsLeftPage))
+                Center(
+                    child: LockWinWidget(
+                        landuageHandler: _languageHandler,
+                        secondsLeft: secondsLeftPage))
               )),
         ));
   }

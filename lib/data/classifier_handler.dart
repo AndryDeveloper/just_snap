@@ -4,6 +4,11 @@ import '../config.dart';
 
 class ClassifierHandler {
   late ClassificationModel? _classificationModel;
+  bool _modelLoaded = false;
+
+  ClassifierHandler() {
+    load();
+  }
 
   Future load() async {
     if (!Platform.isWindows) {
@@ -11,11 +16,15 @@ class ClassifierHandler {
           CLASSIFIER_PATH, IMAGE_SIZE, IMAGE_SIZE,
           labelPath: LABELS_PATH);
     }
+    _modelLoaded = true;
   }
 
   void unload() {
     _classificationModel = null;
+    _modelLoaded = false;
   }
+
+  bool get modelLoaded => _modelLoaded;
 
   Future<List<String>> predict(String imagePath) async {
     if (!Platform.isWindows) {
@@ -42,7 +51,7 @@ class ClassifierHandler {
       }
       return topPredictions;
     } else {
-      return Future(() => List.filled(TOP_K_PREDICTIONS, 'patas'));
+      return Future(() => List.filled(TOP_K_PREDICTIONS, '25'));
     }
   }
 }

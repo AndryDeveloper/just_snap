@@ -70,6 +70,8 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
+    - assets/labels/imagenet1k_labels_en.txt
+    - assets/labels/imagenet1k_labels_ru.txt
     - assets/labels/imagenet1k_labels.txt
     - assets/models/ConvNeXt_nano.pt
 

@@ -10,11 +10,13 @@ abstract class ListItem {
 
 class ChallengeItem implements ListItem {
   final Challenge challenge;
+  final List<String> labels;
 
-  ChallengeItem(this.challenge);
+  ChallengeItem(this.challenge, this.labels);
 
   @override
-  Widget buildTitle(BuildContext context) => Text(challenge.prompt);
+  Widget buildTitle(BuildContext context) =>
+      Text(labels[int.parse(challenge.prompt)]);
 
   @override
   Widget buildSubtitle(BuildContext context) =>

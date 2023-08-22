@@ -19,8 +19,8 @@ class HistoryHandler {
               eol: '\n', fieldDelimiter: CSV_FIELD_DELIMITER)
           .convert(rawData);
       for (var el in listData) {
-        _challenges.add(Challenge(
-            el[0], el[1], DateTime.fromMillisecondsSinceEpoch(el[2] * 1000)));
+        _challenges.add(Challenge(el[0], '${el[1]}',
+            DateTime.fromMillisecondsSinceEpoch(el[2] * 1000)));
       }
     }
   }
@@ -53,5 +53,7 @@ class HistoryHandler {
     }
   }
 
-  List<Challenge> get challenges => _challenges;
+  List<Challenge> get challenges {
+    return _challenges;
+  }
 }

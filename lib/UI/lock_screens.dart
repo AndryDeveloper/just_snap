@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:just_snap/data/language_handler.dart';
 
 class LockWinWidget extends StatelessWidget {
   final int secondsLeft;
+  final LanduageHandler landuageHandler;
 
-  const LockWinWidget({required this.secondsLeft, super.key});
+  const LockWinWidget(
+      {required this.landuageHandler, required this.secondsLeft, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +22,7 @@ class LockWinWidget extends StatelessWidget {
       dateFormat = DateFormat('ss').format(dateTime);
     }
     return Text(
-        textAlign: TextAlign.center,
-        'You have already photographed the desired item,\nthe next one will appear in\n$dateFormat');
+        textAlign: TextAlign.center, landuageHandler.winTimerText(dateFormat));
   }
 }
 
@@ -29,9 +31,11 @@ class LockLoseWidget extends StatelessWidget {
   final String guessedWord;
   final Widget button;
   final String prompt;
+  final LanduageHandler landuageHandler;
 
   const LockLoseWidget(
-      {required this.prompt,
+      {required this.landuageHandler,
+      required this.prompt,
       required this.button,
       required this.guessedWord,
       required this.secondsLeft,
@@ -52,7 +56,7 @@ class LockLoseWidget extends StatelessWidget {
     return Column(children: [
       Text(
           textAlign: TextAlign.center,
-          'Sorry, but we think you took a photo of the $guessedWord,\ninstead of $prompt,\nyou can try again in\n$dateFormat'),
+          landuageHandler.loseTimerText(guessedWord, prompt, dateFormat)),
       button
     ]);
   }
